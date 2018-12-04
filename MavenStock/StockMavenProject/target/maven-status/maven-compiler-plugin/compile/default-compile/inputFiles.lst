@@ -1,0 +1,11 @@
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/model/Entity.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/repository/ShelfRepository.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/model/Product.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/services/ProductServices.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/services/ShelfServices.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/model/Shelf.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/repository/EntityRepository.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/business/ShelfBusiness.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/App.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/business/ProductBusiness.java
+/Users/alunotarde/Desktop/Projectos java/MavenStock/StockMavenProject/src/main/java/io/altar/repository/ProductRepository.java
