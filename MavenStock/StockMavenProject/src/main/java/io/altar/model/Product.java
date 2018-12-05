@@ -1,36 +1,37 @@
 package io.altar.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Product extends Entity{
 	
 	private static final long serialVersionUID = 1L;
 
-	private List<Shelf> listShelfIn;
+	private List<Long> listShelfIn=new ArrayList<Long>();
 	private double valorDesconto;
 	private double iva;
 	private double pvp;
 	
 	public Product(){}
 	
-	public Product( double valorDesconto, double iva, double pvp) {
+	public Product(double valorDesconto, double iva, double pvp) {
 		
-		this.listShelfIn = new ArrayList<Shelf>();
+	
 		this.valorDesconto = valorDesconto;
 		this.iva = iva;
 		this.pvp = pvp;
 	}
 
-	public List<Shelf> getListShelfIn() {
+	public List<Long> getListShelfIn() {
 		return listShelfIn;
 	}
 
-	public void setListShelfIn(List<Shelf> listShelfIn) {
+	public void setListShelfIn(List<Long> listShelfIn) {
 		this.listShelfIn = listShelfIn;
 	}
 	
-	public void addToListShelves(Shelf shelf) {
+	public void addToListShelves(Long shelf) {
 		listShelfIn.add(shelf);
 	}
 	
@@ -65,7 +66,7 @@ public class Product extends Entity{
 	private String getStringShelves() {
 		String str = "";
 		for(int i=0;i<listShelfIn.size();i++) {
-			str+=listShelfIn.get(i).getId();
+			str+=listShelfIn.get(i);
 			str+=", ";
 		}
 		return str;

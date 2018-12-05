@@ -13,32 +13,29 @@ import javax.ws.rs.core.MediaType;
 import io.altar.business.ProductBusiness;
 import io.altar.model.Product;
 
-@Path("/products")
+@Path("products")
 public class ProductServices {
+	
+	ProductBusiness productBusiness1 = new ProductBusiness();
 
 
 	@GET
-	@Path("health")
+	@Path("test")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String health() {
 		return "Api is working";
 	}
 
-	@GET
-	@Path("/")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String health2() {
-		return "Api is working";
-	}
 
 	//criar produto	
 
 	@POST
+	@Path("new")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Product newProduct(Product product1) {
 
-		ProductBusiness.createProduct(product1);
+		productBusiness1.createProduct(product1);
 
 		return product1;
 
@@ -48,12 +45,12 @@ public class ProductServices {
 	//  editar produto	
 
 	@PUT
-	@Path ("edit/{id}")
+	@Path ("edit")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Product editProduct(@PathParam("id") long id, Product editProduct) {
+	public Product editProduct(Product editProduct) {
 
-		ProductBusiness.editProductByID(id);	
+		productBusiness1.editProductByID(editProduct);	
 	
 		return editProduct;
 
@@ -69,7 +66,7 @@ public class ProductServices {
 	public Product consultProduct (@PathParam("id") long id) {
 
 	
-		return ProductBusiness.consultByIdProduct(id);
+		return productBusiness1.consultByIdProduct(id);
 
 	}
 
@@ -81,7 +78,7 @@ public class ProductServices {
 
 	public String deleteProduct (@PathParam("id") long id) {
 
-		ProductBusiness.removeProduct(id);
+		productBusiness1.removeProduct(id);
 		
 
 		return "o produto foi removido.";

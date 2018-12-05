@@ -10,13 +10,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import io.altar.business.ProductBusiness;
+
 import io.altar.business.ShelfBusiness;
-import io.altar.model.Product;
+
 import io.altar.model.Shelf;
 
-@Path("/shelves")
+@Path("shelves")
 public class ShelfServices {
+	
+	ShelfBusiness shelfBusiness1 = new ShelfBusiness();
 	
 	
 	@GET
@@ -30,11 +32,12 @@ public class ShelfServices {
 	//criar shelf
 
 	@POST
+	@Path("new")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Shelf newShelf(Shelf shelf1) {
 
-		ShelfBusiness.createShelf(shelf1);
+		shelfBusiness1.createShelf(shelf1);
 
 		return shelf1;
 
@@ -44,13 +47,13 @@ public class ShelfServices {
 	//  editar shelf	
 
 	@PUT
-	@Path ("edit/{id}")
+	@Path ("edit")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Shelf shelfEdit(@PathParam("id") long id, Shelf shelf) {
+	public Shelf shelfEdit(Shelf shelf1) {
 		
-		
-		return shelf;
+		shelfBusiness1.toeditShelf(shelf1);
+		return shelf1;
 	}
 
 	//consultar shelf
@@ -62,7 +65,7 @@ public class ShelfServices {
 	public Shelf consultShelf (@PathParam("id") long id) {
 
 	
-		return ShelfBusiness.consultShelf(id);
+		return shelfBusiness1.consultShelf(id);
 
 	}
 
@@ -74,8 +77,7 @@ public class ShelfServices {
 
 	public String deleteShelf (@PathParam("id") long id) {
 
-		ShelfBusiness.toRemoveShelf(id);
-		
+		shelfBusiness1.toRemoveShelf(id);
 
 		return "a prateleira foi removida.";
 
