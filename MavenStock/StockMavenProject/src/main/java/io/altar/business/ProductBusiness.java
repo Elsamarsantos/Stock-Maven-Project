@@ -30,9 +30,10 @@ public class ProductBusiness {
 	}
 	
 	
-	public static void editProduct(Product product1) {
+	public static void editProductByID(Long id) {
 
-		productRepository1.editById(product1);
+		 productRepository1.editById(consultByIdProduct(id));
+		 
 
 	}
 }

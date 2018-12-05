@@ -36,10 +36,11 @@ private Map <Long,T> mapa = new LinkedHashMap<Long, T>();
 // editar entidade
 	public void editById(T prodOrShel) {
 		mapa.replace(prodOrShel.getId(), prodOrShel);
+
 	}
 	
 //remover entidades
-	public  void removeById(long id) {
+	public void removeById(long id) {
 		mapa.remove(id);
 		
 	}

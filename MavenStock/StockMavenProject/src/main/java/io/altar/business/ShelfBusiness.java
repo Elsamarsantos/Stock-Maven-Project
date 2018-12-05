@@ -23,5 +23,16 @@ private static final ShelfRepository shelfRepository1 = ShelfRepository.getInsta
 	
 	public static void toRemoveShelf(Long id) {
 		shelfRepository1.removeById(id);
+	
 }
+	public static Shelf consultShelf(Long id) {
+		return shelfRepository1.consultById(id);
+	}
+	
+	public static void toeditShelf(Long id) {
+		
+		shelfRepository1.editById(consultShelf(id));
+		
+	}
+	
 }

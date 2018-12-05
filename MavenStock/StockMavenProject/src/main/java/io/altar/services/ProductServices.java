@@ -51,10 +51,11 @@ public class ProductServices {
 	@Path ("edit/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Product editProduct(@PathParam("id") long id, Product product1) {
+	public Product editProduct(@PathParam("id") long id, Product editProduct) {
 
-		ProductBusiness.editProduct(product1);	
-		return product1;
+		ProductBusiness.editProductByID(id);	
+	
+		return editProduct;
 
 
 	}
