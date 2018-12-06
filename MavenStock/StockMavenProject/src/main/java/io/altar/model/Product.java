@@ -1,7 +1,7 @@
 package io.altar.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.List;
 
 public class Product extends Entity{
@@ -36,7 +36,7 @@ public class Product extends Entity{
 	}
 	
 	public void removeShelf(Shelf shelf) {
-		listShelfIn.remove(shelf);
+		listShelfIn.remove(shelf.getId());
 	}
 
 	public double getValorDesconto() {

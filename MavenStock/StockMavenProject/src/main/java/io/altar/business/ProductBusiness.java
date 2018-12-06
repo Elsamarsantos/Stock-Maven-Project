@@ -2,7 +2,6 @@ package io.altar.business;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import io.altar.model.Product;
 import io.altar.model.Shelf;
@@ -28,11 +27,11 @@ public class ProductBusiness {
 		
 		Product productToRemove = productRepository1.consultById(id);
 		
-//		Iterator<Shelf> shelfList = productToRemove.getListShelfIn().iterator(); 
-//		while (shelfList.hasNext()) {
-//			shelfList.remove();
-//		}
-		
+		Iterator<Long> shelfList = productToRemove.getListShelfIn().iterator(); 
+		while (shelfList.hasNext()) {
+			Shelf shelf1 = ShelfBusiness.consultShelf(shelfList.next());
+			shelf1.setProdutoAlberga(null);
+		}
 		
 		
 		productRepository1.removeById(id);
