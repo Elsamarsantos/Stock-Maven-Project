@@ -38,6 +38,9 @@ public class Product extends Entity{
 	public void removeShelf(Shelf shelf) {
 		listShelfIn.remove(shelf.getId());
 	}
+	public void removeShelf(Long shelfId) {
+		listShelfIn.remove(shelfId);
+	}
 
 	public double getValorDesconto() {
 		return valorDesconto;
