@@ -1,5 +1,7 @@
 package io.altar.services;
 
+import java.util.Collection;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -85,6 +87,15 @@ public class ProductServices {
 
 	}
 
-
+   //consultar todos pos produtos existentes
+	
+	@GET
+	@Path ("consultall")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<Product> consultAllProducts() {
+		
+		return productBusiness1.consultAllProduct();
+	}
+	
 
 }

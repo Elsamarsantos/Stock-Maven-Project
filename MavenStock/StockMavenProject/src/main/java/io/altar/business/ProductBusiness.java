@@ -60,8 +60,22 @@ public class ProductBusiness {
 
 	public void editProductByID(Product product1) {
 		
+		
 		if(productRepository1.consultById(product1.getId())!=null) {
-			//continuar aqui o trabalho
+			
+			Product oldProduct =productRepository1.consultById(product1.getId()); //este é o id do produto
+			
+			//vai eliminar as prateleiras que tiverem respectivo este id producto 
+			Iterator<Long> listShelfInProductToRemove = oldProduct.getListShelfIn().iterator();
+
+			while (listShelfInProductToRemove.hasNext()) {
+				
+				shelfRepository1.consultById(listShelfInProductToRemove.next()).setProdutoAlberga(null);
+				
+			}
+			
+			
+			//editar a lista das prateliras onde o produto esta
 			Iterator<Long> listShelfInProduct = product1.getListShelfIn().iterator();
 
 			Shelf shelfToAdd;
