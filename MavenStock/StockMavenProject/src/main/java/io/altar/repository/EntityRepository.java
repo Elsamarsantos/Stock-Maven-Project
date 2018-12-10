@@ -7,6 +7,7 @@ import java.util.Map;
 import io.altar.model.Entity;
 
 public class EntityRepository <T extends Entity> {
+	
 private Map <Long,T> mapa = new LinkedHashMap<Long, T>();
 	
 

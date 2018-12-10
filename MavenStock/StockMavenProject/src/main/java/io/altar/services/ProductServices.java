@@ -1,6 +1,7 @@
 package io.altar.services;
 
-import java.util.Collection;
+
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -13,6 +14,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import io.altar.business.ProductBusiness;
+import io.altar.dto.ProductDto;
+import io.altar.dto.ShelfDto;
 import io.altar.model.Product;
 
 @Path("products")
@@ -67,7 +70,7 @@ public class ProductServices {
 	@Path("consult/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 
-	public Product consultProduct (@PathParam("id") long id) {
+	public ProductDto consultProduct (@PathParam("id") long id) {
 
 	
 		return productBusiness1.consultByIdProduct(id);
@@ -94,10 +97,20 @@ public class ProductServices {
 	@GET
 	@Path ("consultall")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Product> consultAllProducts() {
+	public List <ProductDto> consultAllProducts() {
 		
 		return productBusiness1.consultAllProduct();
 	}
 	
-
+	
+	
+	//consultar a lista de prateleiras do produto
+	@GET
+	@Path ("shelves/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List <ShelfDto> consultShelves(@PathParam("id")long id ) {
+		
+		
+		return productBusiness1.listShelfInProduct(id);
+	}
 }

@@ -1,8 +1,10 @@
 package io.altar.business;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-
+import io.altar.dto.ShelfDto;
 import io.altar.model.Product;
 import io.altar.model.Shelf;
 import io.altar.repository.ProductRepository;
@@ -21,7 +23,7 @@ public class ShelfBusiness {
 		if (productInShelf !=null) {
 			shelf1.setProdutoAlberga(productInShelf);						
 			shelfRepository1.saveId(shelf1);
-			productInShelf.addToListShelves(shelf1.getId());
+			productInShelf.addToListShelves(shelf1);
 		}else {
 
 			Product productInShelf2= null;
@@ -33,9 +35,19 @@ public class ShelfBusiness {
 
 	}
 	
-	public Collection <Shelf> consultAllShelf(){
+	public List <ShelfDto> consultAllShelf(){
 		
-		return shelfRepository1.consultAll();
+		
+		Collection <Shelf> shelfList = shelfRepository1.consultAll();
+		List <ShelfDto> shelfListDto = new ArrayList();
+		for(Shelf shelf1:shelfList ) {
+			shelfListDto.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga(),shelf1.getPrecoAluguer()));
+			
+			
+		}
+		
+		
+		return shelfListDto;
 		
 	}
 	
@@ -49,9 +61,12 @@ public class ShelfBusiness {
 			shelfRepository1.removeById(id);
 		}
 	}
-	public Shelf consultShelf(Long id) {
+	public ShelfDto consultShelf(Long id) {
+		
+		Shelf shelf1=shelfRepository1.consultById(id);
+		ShelfDto shelfDto= new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga(),shelf1.getPrecoAluguer());
 
-		return shelfRepository1.consultById(id);
+		return shelfDto;
 
 	}
 	
@@ -72,7 +87,7 @@ public class ShelfBusiness {
 
 				shelf1.setProdutoAlberga(newProductInShelf);	//vai colocar o produto na prateleira	
 				shelfRepository1.editById(shelf1);
-				newProductInShelf.addToListShelves(shelf1.getId()); //vai colocar a prateleira no produto
+				newProductInShelf.addToListShelves(shelf1); //vai colocar a prateleira no produto
 
 				
 				

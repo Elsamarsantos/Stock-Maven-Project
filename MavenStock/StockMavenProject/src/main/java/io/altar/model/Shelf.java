@@ -3,6 +3,8 @@ package io.altar.model;
 public class Shelf extends Entity{
 	
 	private static final long serialVersionUID = 1L;
+	
+	
 	private int capacidade;
 	private Product produtoAlberga;
 	private double precoAluguer;

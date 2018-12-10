@@ -8,39 +8,38 @@ public class Product extends Entity{
 	
 	private static final long serialVersionUID = 1L;
 
-	private List<Long> listShelfIn=new ArrayList<Long>();
+	private List<Shelf> listShelfIn=new ArrayList<Shelf>();
 	private double valorDesconto;
 	private double iva;
 	private double pvp;
 	
 	public Product(){}
 	
-	public Product(double valorDesconto, double iva, double pvp) {
-		
-	
+	public Product(List<Shelf> listShelfIn,double valorDesconto, double iva, double pvp) {
+		this.listShelfIn= listShelfIn;
 		this.valorDesconto = valorDesconto;
 		this.iva = iva;
 		this.pvp = pvp;
 	}
 
-	public List<Long> getListShelfIn() {
+	public List<Shelf> getListShelfIn() {
 		return listShelfIn;
 	}
 
-	public void setListShelfIn(List<Long> listShelfIn) {
+	public void setListShelfIn(List<Shelf> listShelfIn) {
 		this.listShelfIn = listShelfIn;
 	}
 	
-	public void addToListShelves(Long shelf) {
+	public void addToListShelves(Shelf shelf) {
 		listShelfIn.add(shelf);
 	}
 	
 	public void removeShelf(Shelf shelf) {
-		listShelfIn.remove(shelf.getId());
+		listShelfIn.remove(shelf);
 	}
-	public void removeShelf(Long shelfId) {
-		listShelfIn.remove(shelfId);
-	}
+//	public void removeShelf(Long shelfId) {
+//		listShelfIn.remove(shelfId);
+//	}
 
 	public double getValorDesconto() {
 		return valorDesconto;
