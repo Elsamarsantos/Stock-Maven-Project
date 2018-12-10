@@ -42,6 +42,8 @@ public class ProductServices {
 		return product1;
 
 	}
+	
+
 
 
 	//  editar produto	

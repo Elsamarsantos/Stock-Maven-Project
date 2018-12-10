@@ -12,4 +12,6 @@ public class ProductRepository extends EntityRepository<Product> {
 		return INSTANCE;
 	}
 	
+	
+	
 }

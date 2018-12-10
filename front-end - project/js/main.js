@@ -8,12 +8,14 @@ function getProducts() {
         success: function (data) {
             console.log(data);
 
-            for (let i=0 ; i < data.length; i++) {
-                        const element = data[i];
-                        var produtos = "<tr><td>" + data[i].valorDesconto + "</td><td>" + data[i].iva + "</td><td>" + data[i].pvp + "</td><td>" + data[i].id + "</td></tr>";
+           
+
+            // for (let i=0 ; i < data.length; i++) {
+            //             const element = data[i];
+            //             var produtos = "<tr><td>" + data[i].valorDesconto + "</td><td>" + data[i].iva + "</td><td>" + data[i].pvp + "</td><td>" + data[i].id + "</td></tr>";
     
-                        $('#tabelaproduto').append(produtos);
-                    }
+            //             $('#tabelaproduto').append(produtos);
+            //         }
 
 
             // if (data.length > 10) {

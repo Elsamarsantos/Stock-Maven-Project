@@ -33,6 +33,9 @@ public class ProductBusiness {
 		productRepository1.saveId(product1);
 	}
 
+
+	
+	
 	public Collection<Product> consultAllProduct() {
 
 		return productRepository1.consultAll();

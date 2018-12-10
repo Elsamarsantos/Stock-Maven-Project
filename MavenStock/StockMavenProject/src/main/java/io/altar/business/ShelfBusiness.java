@@ -1,7 +1,7 @@
 package io.altar.business;
 
 import java.util.Collection;
-import java.util.Iterator;
+
 
 import io.altar.model.Product;
 import io.altar.model.Shelf;
