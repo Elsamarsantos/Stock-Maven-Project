@@ -1,8 +1,9 @@
 package io.altar.dto;
 
-import io.altar.model.Entity;
+import io.altar.model.BaseEntity;
 
-public class ProductDto extends Entity{
+
+public class ProductDto extends BaseEntity{
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
