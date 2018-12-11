@@ -38,11 +38,12 @@ public class ProductServices {
 	@Path("new")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Product newProduct(Product product1) {
+	public ProductDto newProduct(Product product1) {
 
 		productBusiness1.createProduct(product1);
-
-		return product1;
+		
+		
+		return productBusiness1.consultByIdProduct(product1.getId());
 
 	}
 	
@@ -55,12 +56,10 @@ public class ProductServices {
 	@Path ("edit")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Product editProduct(Product editProduct) {
+	public void editProduct(Product editProduct) {
 
 		productBusiness1.editProductByID(editProduct);	
 	
-		return editProduct;
-
 
 	}
 

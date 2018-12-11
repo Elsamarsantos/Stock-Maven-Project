@@ -24,6 +24,7 @@ public class ProductBusiness {
 		Shelf shelfToAdd;
 
 		while (listShelfInProduct.hasNext()) {
+			
 			Shelf shelf1=listShelfInProduct.next();
 			shelfToAdd = shelfRepository1.consultById(shelf1.getId());
 			if (shelfToAdd != null && shelfToAdd.getProdutoAlberga() == null) {
@@ -35,6 +36,7 @@ public class ProductBusiness {
 		}
 
 		productRepository1.saveId(product1);
+	
 	}
 
 

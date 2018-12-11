@@ -38,11 +38,11 @@ public class ShelfServices {
 	@Path("new")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Shelf newShelf(Shelf shelf1) {
+	public void newShelf(Shelf shelf1) {
 
 		shelfBusiness1.createShelf(shelf1);
 
-		return shelf1;
+		
 
 	}
 
@@ -53,10 +53,10 @@ public class ShelfServices {
 	@Path ("edit")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Shelf shelfEdit(Shelf shelf1) {
+	public void shelfEdit(Shelf shelf1) {
 		
 		shelfBusiness1.toeditShelf(shelf1);
-		return shelf1;
+		
 	}
 
 	//consultar shelf
