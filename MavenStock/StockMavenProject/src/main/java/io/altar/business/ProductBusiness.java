@@ -22,9 +22,9 @@ public class ProductBusiness {
 	@Inject
 	private ShelfRepository shelfRepository1;
 	
-	
 	@Transactional
 	public void createProduct1(Product product1) {
+		
 		productRepository1.saveId(product1);
 	}
 	
