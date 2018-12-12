@@ -12,22 +12,12 @@ public class Shelf extends BaseEntity{
 	
 	private int capacidade;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade= {CascadeType.PERSIST})
 	private Product produtoAlberga;
 	private double precoAluguer;
 	
 	
 	
-	//Os construtores ja nao sao necessario. o jpa cria 
-//	public Shelf(){}
-//	
-//	public Shelf(int capacidade, Product produtoAlberga, double precoAluguer) {
-//		
-//		this.capacidade = capacidade;
-//		this.produtoAlberga = produtoAlberga;
-//		this.precoAluguer = precoAluguer;
-//	}
-
 
 	public int getCapacidade() {
 		return capacidade;

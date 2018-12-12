@@ -12,6 +12,9 @@ public class ProductRepository extends EntityRepository<Product> {
 
 		return INSTANCE;
 	}
+	protected  Class<Product> getEntityClass(){
+		return Product.class;
+	}
 	
 	
 	

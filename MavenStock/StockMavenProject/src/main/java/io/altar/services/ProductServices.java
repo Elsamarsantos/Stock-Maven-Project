@@ -1,7 +1,7 @@
 package io.altar.services;
 
 
-import java.util.List;
+
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 
 import io.altar.business.ProductBusiness;
 import io.altar.dto.ProductDto;
-import io.altar.dto.ShelfDto;
+
 import io.altar.model.Product;
 
 @Path("products")
@@ -42,8 +42,7 @@ public class ProductServices {
 	public void newProduct(Product product1) {
 
 		productBusiness1.createProduct1(product1);
-		
-	
+
 
 	}
 	
@@ -52,44 +51,44 @@ public class ProductServices {
 
 	//  editar produto	
 
-//	@PUT
-//	@Path ("edit")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public void editProduct(Product editProduct) {
-//
-//		productBusiness1.editProductByID(editProduct);	
-//	
-//
-//	}
+	@PUT
+	@Path ("edit")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public void editProduct(Product editProduct) {
+
+		productBusiness1.updateProduct(editProduct);	
+	
+
+	}
 
 	//consultar produto
 
-//	@GET
-//	@Path("consult/{id}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//
-//	public ProductDto consultProduct (@PathParam("id") long id) {
-//
-//	
-//		return productBusiness1.consultByIdProduct(id);
-//
-//	}
+	@GET
+	@Path("consult/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+
+	public ProductDto consultProduct (@PathParam("id") long id) {
+
+	
+		return productBusiness1.consultProduct(id);
+
+	}
 
 	//remover produto
 
-//	@DELETE
-//	@Path("delete/{id}")
-//	@Produces(MediaType.TEXT_PLAIN)
-//
-//	public String deleteProduct (@PathParam("id") long id) {
-//
-//		productBusiness1.removeProduct(id);
-//		
-//
-//		return "o produto foi removido.";
-//
-//	}
+	@DELETE
+	@Path("delete/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+
+	public String deleteProduct (@PathParam("id") long id) {
+
+		productBusiness1.removeProduct(id);
+		
+
+		return "o produto foi removido.";
+
+	}
 //
 //   //consultar todos pos produtos existentes
 //	

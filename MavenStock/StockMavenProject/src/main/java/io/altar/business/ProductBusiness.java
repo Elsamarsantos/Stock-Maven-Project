@@ -1,56 +1,55 @@
 package io.altar.business;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import io.altar.dto.ProductDto;
-import io.altar.dto.ShelfDto;
+
 import io.altar.model.Product;
-import io.altar.model.Shelf;
+
 import io.altar.repository.ProductRepository;
-import io.altar.repository.ShelfRepository;
+
 
 public class ProductBusiness {
 	@Inject
 	private ProductRepository productRepository1;
 	
-	@Inject
-	private ShelfRepository shelfRepository1;
+
 	
 	@Transactional
 	public void createProduct1(Product product1) {
-		
+
 		productRepository1.saveId(product1);
 	}
 	
+	
+	@Transactional
+	public ProductDto consultProduct(Long id) {
+		
+		Product product1= productRepository1.consultById(id);
+		ProductDto productDto = new ProductDto(product1.getId(),product1.getValorDesconto(),product1.getIva(),product1.getPvp());
+		return productDto;
+	}
 
-//	public void createProduct(Product product1) {
-//
-//		Iterator<Shelf> listShelfInProduct = product1.getListShelfIn().iterator();
-//
-//		Shelf shelfToAdd;
-//
-//		while (listShelfInProduct.hasNext()) {
-//			
-//			Shelf shelf1=listShelfInProduct.next();
-//			shelfToAdd = shelfRepository1.consultById(shelf1.getId());
-//			if (shelfToAdd != null && shelfToAdd.getProdutoAlberga() == null) {
-//				shelfToAdd.setProdutoAlberga(product1);
-//			} else  {
-//				product1.removeShelf(shelf1);
-//				listShelfInProduct = product1.getListShelfIn().iterator();
-//			}
-//		}
-//
-//		productRepository1.saveId(product1);
-//	
-//	}
+	
+	@Transactional
+	public void removeProduct(Long id) {
 
+
+			productRepository1.removeById(id);
+		}
+
+	
+	@Transactional
+	public void updateProduct(Product product1) {
+
+
+			productRepository1.editById(product1);
+		}
+
+	
 
 	
 	
@@ -74,32 +73,10 @@ public class ProductBusiness {
 //		
 //	}
 //	
+	
 
-//	public void removeProduct(Long id) {
-//
-//		Product productToRemove = productRepository1.consultById(id);
-//
-//		if (productToRemove != null) {
-//			Iterator<Shelf> shelfList = productToRemove.getListShelfIn().iterator();
-//			while (shelfList.hasNext()) {
-//				Shelf shelf1 = shelfRepository1.consultById(shelfList.next().getId());
-//				shelf1.setProdutoAlberga(null);
-//
-//			}
-//			productRepository1.removeById(id);
-//		}
-//
-//	}
-//
-//	public ProductDto consultByIdProduct(Long id) {
-//		
-//		Product product1 = productRepository1.consultById(id);
-//		
-//		ProductDto productDto = new ProductDto(product1.getId(),product1.getValorDesconto(),product1.getIva(),product1.getPvp());
-//		
-//		
-//		return productDto;
-//	}
+
+
 //
 //	public void editProductByID(Product product1) {
 //

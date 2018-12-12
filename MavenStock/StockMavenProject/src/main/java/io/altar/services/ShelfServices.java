@@ -1,7 +1,7 @@
 package io.altar.services;
 
 
-import java.util.List;
+
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -50,42 +50,42 @@ public class ShelfServices {
 
 	//  editar shelf	
 
-//	@PUT
-//	@Path ("edit")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public void shelfEdit(Shelf shelf1) {
-//		
-//		shelfBusiness1.toeditShelf(shelf1);
-//		
-//	}
-//
+	@PUT
+	@Path ("edit")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public void shelfEdit(Shelf shelf1) {
+		
+		shelfBusiness1.updateShelf(shelf1);
+		
+	}
+
 //	//consultar shelf
 //
-//	@GET
-//	@Path("consult/{id}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//
-//	public ShelfDto consultShelf (@PathParam("id") long id) {
-//
-//	
-//		return shelfBusiness1.consultShelf(id);
-//
-//	}
-//
+	@GET
+	@Path("consult/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+
+	public ShelfDto consultShelf (@PathParam("id") long id) {
+
+	
+		return shelfBusiness1.consultShelf(id);
+
+	}
+
 //	//remover shelf
-//
-//	@DELETE
-//	@Path("delete/{id}")
-//	@Produces(MediaType.TEXT_PLAIN)
-//
-//	public String deleteShelf (@PathParam("id") long id) {
-//
-//		shelfBusiness1.toRemoveShelf(id);
-//
-//		return "a prateleira foi removida.";
-//
-//	}
+
+	@DELETE
+	@Path("delete/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+
+	public String deleteShelf (@PathParam("id") long id) {
+
+		shelfBusiness1.toRemoveShelf(id);
+
+		return "a prateleira foi removida.";
+
+	}
 //
 //	@GET
 //	@Path ("consultall")

@@ -11,5 +11,8 @@ public class ShelfRepository extends EntityRepository<Shelf>{
 
 		return INSTANCE;
 	}
+	protected  Class<Shelf> getEntityClass(){
+		return Shelf.class;
+	}
 
 }

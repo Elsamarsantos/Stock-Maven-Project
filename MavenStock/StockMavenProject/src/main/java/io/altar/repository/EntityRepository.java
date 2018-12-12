@@ -8,16 +8,14 @@ import javax.persistence.PersistenceContext;
 import io.altar.model.BaseEntity;
 
 
-public class EntityRepository <T extends BaseEntity> {
-	
-	//private Map <Long,T> mapa = new LinkedHashMap<Long, T>(); ja nao e necessario no jpa
+public abstract class EntityRepository <T extends BaseEntity> {
+
 	
 	
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	//criar novo id		
-	//long novoId=0;	
+		
 	
 	public T saveId(T entity) {
 		return entityManager.merge(entity);
@@ -25,11 +23,12 @@ public class EntityRepository <T extends BaseEntity> {
 	}
 	
 	
-//	public void removeById (long id) {
-//	
-//		entityManager.remove(entity);
-//	}
-//	
+	public void removeById (long id) {
+	
+		entityManager.remove(consultById(id));
+	
+	}
+	
 	
 	public T editById (T entity) {
 		return entityManager.merge(entity);
@@ -37,20 +36,21 @@ public class EntityRepository <T extends BaseEntity> {
 	
 	
 //	public List<T> getAll(){
-//		
-//	}
-//	public T consultById (long id) {
-//		
+//		entityManager.createNativeQuery(sqlString, resultClass)
 //	}
 	
 	
-//	public void saveId(T newId) {
-//		newId.setId(novoId);
-//		mapa.put(newId.getId(), newId);
-//		novoId++;
-//	}
-//	
-//	
+	public T  consultById (long id) {
+		
+		return entityManager.find(getEntityClass(),id);
+		
+	}
+	
+	protected abstract Class<T> getEntityClass();
+	
+	
+	
+
 //consultar todas as entidade	
 //	public  Collection<T> consultAll() {
 //		return mapa.values();

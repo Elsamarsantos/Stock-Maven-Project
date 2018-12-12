@@ -21,16 +21,7 @@ public class Product extends BaseEntity{
 	private double iva;
 	private double pvp;
 	
-	//Os construtores ja nao sao necessario. o jpa cria 
 
-//	public Product(){}
-//
-//	public Product(List<Shelf> listShelfIn,double valorDesconto, double iva, double pvp) {
-//		this.listShelfIn= listShelfIn;
-//		this.valorDesconto = valorDesconto;
-//		this.iva = iva;
-//		this.pvp = pvp;
-//	}
 
 	public List<Shelf> getListShelfIn() {
 		return listShelfIn;
@@ -47,9 +38,7 @@ public class Product extends BaseEntity{
 	public void removeShelf(Shelf shelf) {
 		listShelfIn.remove(shelf);
 	}
-//	public void removeShelf(Long shelfId) {
-//		listShelfIn.remove(shelfId);
-//	}
+
 
 	public double getValorDesconto() {
 		return valorDesconto;

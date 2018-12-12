@@ -1,16 +1,16 @@
 package io.altar.dto;
 
 
-import io.altar.model.Product;
+
 
 public class ShelfDto {
 	//private static final long serialVersionUID = 1L;
 	private Long id;
 	
 	private int capacidade;
-	private Product produtoAlberga;
+	private ProductDto produtoAlberga;
 	private double precoAluguer;
-	public ShelfDto(Long id, int capacidade, Product produtoAlberga, double precoAluguer) {
+	public ShelfDto(Long id, int capacidade, ProductDto produtoAlberga, double precoAluguer) {
 		this.id= id;
 		this.capacidade = capacidade;
 		this.produtoAlberga = produtoAlberga;
@@ -38,7 +38,7 @@ public class ShelfDto {
 		return capacidade;
 	}
 	
-	public Product getProdutoAlberga() {
+	public ProductDto getProdutoAlberga() {
 		return produtoAlberga;
 	}
 	

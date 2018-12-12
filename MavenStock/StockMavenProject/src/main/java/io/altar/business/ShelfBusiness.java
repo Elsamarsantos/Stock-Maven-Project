@@ -1,51 +1,32 @@
 package io.altar.business;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import io.altar.dto.ProductDto;
 import io.altar.dto.ShelfDto;
 import io.altar.model.Product;
 import io.altar.model.Shelf;
-import io.altar.repository.ProductRepository;
+
 import io.altar.repository.ShelfRepository;
 
 public class ShelfBusiness {
 	@Inject
 	private ShelfRepository shelfRepository1;
 	
-	@Inject
-	private  ProductRepository productRepository1;
+	//@Inject
+	//private  ProductRepository productRepository1;
 	
 
 	@Transactional
 	public void createShelf1(Shelf shelf1) {
 
-								
-			shelfRepository1.saveId(shelf1);
-			}
+		shelfRepository1.saveId(shelf1);
+	}
+
 			
-			
-//		public void createShelf(Shelf shelf1) {
-//
-//			Product productInShelf=productRepository1.consultById(shelf1.getProdutoAlberga().getId());
-//					
-//			if (productInShelf !=null) {
-//				shelf1.setProdutoAlberga(productInShelf);						
-//				shelfRepository1.saveId(shelf1);
-//				productInShelf.addToListShelves(shelf1);
-//			}else {
-//
-//				Product productInShelf2= null;
-//				shelf1.setProdutoAlberga(productInShelf2);
-//				shelfRepository1.saveId(shelf1);
-//
-//			}
-//
-//	}
+
 //	
 //	public List <ShelfDto> consultAllShelf(){
 //		
@@ -62,26 +43,35 @@ public class ShelfBusiness {
 //		return shelfListDto;
 //		
 //	}
-//	
-//	public void toRemoveShelf(Long id) {
-//
-//		Shelf shelf1 = shelfRepository1.consultById(id);
-//		if (shelf1!=null) {
-//			Product productToRemove = productRepository1.consultById(shelf1.getProdutoAlberga().getId());
-//			productToRemove.removeShelf(shelf1);
-//
-//			shelfRepository1.removeById(id);
-//		}
-//	}
-//	public ShelfDto consultShelf(Long id) {
-//		
-//		Shelf shelf1=shelfRepository1.consultById(id);
-//		ShelfDto shelfDto= new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga(),shelf1.getPrecoAluguer());
-//
-//		return shelfDto;
-//
-//	}
-//	
+	
+	@Transactional
+	public void toRemoveShelf(Long id) {
+		
+			shelfRepository1.removeById(id);
+		
+	}
+	
+	@Transactional
+	public ShelfDto consultShelf(Long id) {
+		
+		Product product1 = shelfRepository1.consultById(id).getProdutoAlberga();
+		
+		ProductDto productDto = new ProductDto(product1.getId(),product1.getValorDesconto(),product1.getPvp(),product1.getPvp());
+		Shelf shelf1=shelfRepository1.consultById(id);
+		
+		ShelfDto shelfDto= new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),productDto,shelf1.getPrecoAluguer());
+
+		return shelfDto;
+
+	}
+	
+	@Transactional
+	public void updateShelf(Shelf shelf1) {
+		
+			shelfRepository1.editById(shelf1);
+		
+	}
+	
 //	public void toeditShelf(Shelf shelf1) {
 //		
 //		
