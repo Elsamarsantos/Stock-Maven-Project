@@ -1,6 +1,9 @@
 package io.altar.business;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -27,22 +30,43 @@ public class ShelfBusiness {
 
 			
 
-//	
-//	public List <ShelfDto> consultAllShelf(){
-//		
-//		
-//		Collection <Shelf> shelfList = shelfRepository1.consultAll();
-//		List <ShelfDto> shelfListDto = new ArrayList();
-//		for(Shelf shelf1:shelfList ) {
-//			shelfListDto.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga(),shelf1.getPrecoAluguer()));
-//			
-//			
-//		}
-//		
-//		
-//		return shelfListDto;
-//		
-//	}
+	@Transactional
+	public List <ShelfDto> consultAllShelf(){
+		
+		
+		List<Shelf> shelfList =  shelfRepository1.getAll() ;
+		
+		List<ShelfDto> shelfDtoList = new ArrayList();
+		
+		for(Shelf shelf1: shelfList) {
+			
+		
+			shelfDtoList.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga().getId(),shelf1.getPrecoAluguer()));
+		}
+		
+
+		return shelfDtoList ;
+	}
+	
+	@Transactional
+	public List <ShelfDto> consultAllShelfByIdProduct(Long id){
+		
+		
+		List<Shelf> shelfList =  shelfRepository1.getListShelfInProduct(id) ;
+		
+		List<ShelfDto> shelfDtoList = new ArrayList();
+		
+		for(Shelf shelf1: shelfList) {
+			
+			shelfDtoList.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga().getId(),shelf1.getPrecoAluguer()));
+		}
+		
+
+		return shelfDtoList ;
+		
+	}
+	
+	
 	
 	@Transactional
 	public void toRemoveShelf(Long id) {
@@ -71,6 +95,10 @@ public class ShelfBusiness {
 			shelfRepository1.editById(shelf1);
 		
 	}
+	
+	
+	
+	
 	
 //	public void toeditShelf(Shelf shelf1) {
 //		

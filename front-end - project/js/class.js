@@ -1,5 +1,6 @@
 class Product{
-    constructor(discountValue,iva,pvp){
+    constructor(listaPrateleiras, discountValue,iva,pvp){
+        this.listaPrateleiras=listaPrateleiras;
         this.discountValue=discountValue; 
         this.iva=iva; 
         this.pvp=pvp;  

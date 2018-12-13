@@ -10,17 +10,19 @@ public class ShelfDto {
 	private int capacidade;
 	private ProductDto produtoAlberga;
 	private double precoAluguer;
+	private long produtoAlbergaId;
+	
+	
 	public ShelfDto(Long id, int capacidade, ProductDto produtoAlberga, double precoAluguer) {
 		this.id= id;
 		this.capacidade = capacidade;
-		this.produtoAlberga = produtoAlberga;
 		this.precoAluguer = precoAluguer;
 	}
 	
-	public ShelfDto(Long id, int capacidade, double precoAluguer) {
+	public ShelfDto(Long id, int capacidade, long produtoAlbergaId , double precoAluguer) {
 		this.id= id;
 		this.capacidade = capacidade;
-
+		this.produtoAlbergaId = produtoAlbergaId;
 		this.precoAluguer = precoAluguer;
 	}
 	
@@ -33,7 +35,7 @@ public class ShelfDto {
 		return id;
 	}
 
-
+	
 	public int getCapacidade() {
 		return capacidade;
 	}

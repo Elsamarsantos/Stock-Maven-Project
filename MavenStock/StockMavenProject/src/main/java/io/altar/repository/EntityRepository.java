@@ -2,6 +2,8 @@ package io.altar.repository;
 
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -13,7 +15,7 @@ public abstract class EntityRepository <T extends BaseEntity> {
 	
 	
 	@PersistenceContext
-	private EntityManager entityManager;
+	protected EntityManager entityManager;
 
 		
 	
@@ -35,9 +37,10 @@ public abstract class EntityRepository <T extends BaseEntity> {
 	}
 	
 	
-//	public List<T> getAll(){
-//		entityManager.createNativeQuery(sqlString, resultClass)
-//	}
+	
+	public List<T> getAll(){
+		return entityManager.createNamedQuery(getNamedQueryAll(),getEntityClass()).getResultList();
+	}
 	
 	
 	public T  consultById (long id) {
@@ -48,37 +51,8 @@ public abstract class EntityRepository <T extends BaseEntity> {
 	
 	protected abstract Class<T> getEntityClass();
 	
-	
+	protected abstract String getNamedQueryAll();
 	
 
-//consultar todas as entidade	
-//	public  Collection<T> consultAll() {
-//		return mapa.values();
-//		
-//	}
-//	
-//	
-////consultar atraves do ID	
-//	public  T consultById(Long id) {
-//	
-//		return mapa.get(id);
-//	}
-//	
-//// editar entidade
-//	public void editById(T prodOrShel) {
-//		mapa.replace(prodOrShel.getId(), prodOrShel);
-//
-//	}
-//	
-////remover entidades
-//	public void removeById(long id) {
-//		mapa.remove(id);
-//		
-//	}
-//	
-//	public Map<Long, T> getMap() {
-//		return mapa;
-//	}
-//	
-//	
+
 }

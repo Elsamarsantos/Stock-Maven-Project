@@ -3,11 +3,23 @@ package io.altar.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+		@NamedQuery(name=Shelf.QUERYALLSHELVES, query="SELECT s FROM Shelf s"),
+		@NamedQuery(name=Shelf.QUERYALLSHELVESBYIDPRODUCT, query="SELECT s FROM Shelf s WHERE s.produtoAlberga.id= :id")
+})
+
 public class Shelf extends BaseEntity{
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static final String QUERYALLSHELVES = "findAllShelves";
+	
+	public static final String QUERYALLSHELVESBYIDPRODUCT = "findShelvesById";
+	
 	
 	
 	private int capacidade;

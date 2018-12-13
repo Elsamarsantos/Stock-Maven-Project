@@ -43,15 +43,16 @@
                 <div class="col-sm-6 col-md-6">
                    
                     <h3 class="center back">Produtos</h3>
-                    <p id="vaite">fdgdfgdfgd</p>
+                  
                     
                     
                     <table id="tabelaproduto" class="table table-bordered center">
                         <thead class="table-dark">
-                            <td>DiscountValue</td>
+                           <td>Id</td>
+                            <td>Valor de Desconto</td>
                             <td>Iva</td>
                             <td>Pvp</td>
-                            <td>Id</td>
+                            
                         </thead>
                     </table>
 
@@ -60,10 +61,12 @@
                     <h3 class="center back">Prateleiras</h3>
                     <table id="tabelaprateleira" class="table table-bordered center">
                         <thead class="table-dark">
-                            <td>Capacity</td>
-                            <td>RentPrice</td>
                             <td>Id</td>
-                            <td>ProductId</td>
+                            <td>Capacidade</td>
+                            <td>Preco de Aluguer</td>
+                            <td>Produto que Alberga</td>
+                            
+                    
                         </thead>
                     </table>
                 </div>
@@ -99,11 +102,13 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <label for="">Discount Value:</label>
+                                    <label for="">Lista de prateleiras:</label>
+                                    <input id="listaprateleiras" type="text"><br>
+                                    <label for="">Valor de desconto:</label>
                                     <input id="discountValue" type="text"><br>
                                     <label for="">IVA:</label>
                                     <input id="iva" type="text"><br>
-                                    <label for="">pvp:</label>
+                                    <label for="">PvP:</label>
                                     <input id="pvp" type="text">
                                 </div>
                                 <div class="modal-footer">
@@ -126,7 +131,7 @@
                         <button id="pesquisarproduto" class="btn btn-warning btn-sm" onclick="getProductsbyId()">Pesquisar</button>
                         <table id="tableprodutobyid" class="table table-bordered center">
                             <thead>
-                                <td>DValue</td>
+                                <td>ValorD</td>
                                 <td>Iva</td>
                                 <td>Pvp</td>
                             </thead>
@@ -145,7 +150,7 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="">Discount Value</label>
+                                <label for="">Valor de Desconto</label>
                                 <input type="text" class="form-control-sm" id="replacedv" aria-describedby="emailHelp"
                                     placeholder="insert value">
 
@@ -155,7 +160,7 @@
                                 <input type="text" class="form-control-sm" id="replaceiva" placeholder="insert value">
                             </div>
                             <div class="form-group">
-                                <label for="">pvp</label>
+                                <label for="">PvP</label>
                                 <input type="text" class="form-control-sm" id="replacepvp" placeholder="insert value">
                             </div>
 
@@ -169,7 +174,7 @@
                         <h4>Apagar por ID</h4>
                         <label for="">Apagar por Id</label>
                         <input id="iptdeleteidproduto" type="text" placeholder="colocar o Id">
-                        <button id="" class="btn btn-danger btn-sm" onclick="deleteProducts()">Eliminar</button>
+                        <button id="botaodeleteproduct" class="btn btn-danger btn-sm" onclick="deleteProducts()">Eliminar</button>
                     </div>
                 </div>
             </div>
@@ -208,11 +213,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <label for="">Capacity:</label>
+                                    <label for="">Capacidade:</label>
                                     <input id="capacity" type="text"><br>
-                                    <label for="">RentPrice:</label>
+                                    <label for="">Preco de aluguer:</label>
                                     <input id="rentPrice" type="text"><br>
-                                    <label for="">ProductId:</label>
+                                    <label for="">Produto que Alberga:</label>
                                     <input id="productId" type="text">
                                 </div>
                                 <div class="modal-footer">
@@ -235,9 +240,9 @@
                         <button id="pesquisarshelves" class="btn btn-warning btn-sm" onclick="getShelvesbyId()">Pesquisar</button>
                         <table id="tableshelfbyid" class="table table-bordered center">
                             <thead>
-                                <td>Capacity</td>
-                                <td>RPrice</td>
-                                <td>ProductId</td>
+                                <td>Capacidade</td>
+                                <td>Preco de aluguer</td>
+                                <td>Produto que Alberga</td>
                             </thead>
                         </table>
 
@@ -257,18 +262,18 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="">Capacity</label>
+                                <label for="">Capacidade</label>
                                 <input type="text" class="form-control-sm" id="replacecapacity" aria-describedby="emailHelp"
                                     placeholder="insert value">
 
                             </div>
                             <div class="form-group">
-                                <label for="">RentPrice</label>
+                                <label for="">Preco de aluguer</label>
                                 <input type="text" class="form-control-sm" id="replacerentprice" placeholder="insert value">
                             </div>
                             <div class="form-group">
-                                <label for="">ProductId</label>
-                                <input type="yext" class="form-control-sm" id="replaceproductid" placeholder="insert value">
+                                <label for="">Produto que Alberga</label>
+                                <input type="text" class="form-control-sm" id="replaceproductid" placeholder="insert value">
                             </div>
 
                             <button type="submit" class="btn btn-success" onclick="addreplaceShelves()">Substituir</button>
@@ -279,7 +284,7 @@
                         <h4>Apagar por ID</h4>
                         <label for="">Apagar por Id</label>
                         <input id="iptdeleteidshelf" type="text" placeholder="colocar o Id">
-                        <button id="" class="btn btn-danger btn-sm" onclick="deleteShelves()">Eliminar</button>
+                        <button id="botaodeleteshelf" class="btn btn-danger btn-sm" onclick="deleteShelves()">Eliminar</button>
                     </div>
                 </div>
             </div>

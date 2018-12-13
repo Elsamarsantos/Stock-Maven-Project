@@ -5,10 +5,11 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<!-- Unidade de persistencia -->
 	<persistence-unit name="database" transaction-type="JTA">
-		<jta-data-source>java:/stockManagementDS</jta-data-source>
+		
 		
 		<!-- Implementação do JPA -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<jta-data-source>java:/stockManagementDS</jta-data-source>
 		<properties>
 
 		

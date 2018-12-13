@@ -3,6 +3,8 @@ package io.altar.services;
 
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -86,15 +88,22 @@ public class ShelfServices {
 		return "a prateleira foi removida.";
 
 	}
-//
-//	@GET
-//	@Path ("consultall")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<ShelfDto> consultAllShelves() {
-//		
-//		return shelfBusiness1.consultAllShelf();
-//	}
-//
-//
-//
+
+	@GET
+	@Path ("consultall")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ShelfDto> consultAllShelves() {
+		
+		return shelfBusiness1.consultAllShelf();
+	}
+
+	@GET
+	@Path ("consultproduct/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ShelfDto> consultListShelfInProduct(@PathParam("id") long id) {
+		
+		return shelfBusiness1.consultAllShelfByIdProduct(id);
+	}
+
+
 }

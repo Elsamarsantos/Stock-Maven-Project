@@ -7,10 +7,12 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 
 @Entity
+@NamedQuery(name=Product.QUERYALL, query="SELECT p FROM Product p") 
 public class Product extends BaseEntity{
 	
 	private static final long serialVersionUID = 1L;
@@ -21,7 +23,7 @@ public class Product extends BaseEntity{
 	private double iva;
 	private double pvp;
 	
-
+	public static final String QUERYALL = "findAllProduct";
 
 	public List<Shelf> getListShelfIn() {
 		return listShelfIn;

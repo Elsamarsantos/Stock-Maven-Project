@@ -1,6 +1,9 @@
 package io.altar.repository;
 
+import java.util.List;
+
 import io.altar.model.Product;
+import io.altar.model.Shelf;
 
 public class ProductRepository extends EntityRepository<Product> {
 	
@@ -16,6 +19,12 @@ public class ProductRepository extends EntityRepository<Product> {
 		return Product.class;
 	}
 	
+	protected  String getNamedQueryAll() {
+		return Product.QUERYALL;
+	}
 	
-	
+	public List<Shelf> getListShelfInProduct (Long id){
+
+		return  consultById(id).getListShelfIn();
+	}
 }
