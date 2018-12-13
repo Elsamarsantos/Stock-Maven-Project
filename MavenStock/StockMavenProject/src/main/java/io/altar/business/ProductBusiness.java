@@ -2,28 +2,47 @@ package io.altar.business;
 
 
 
+import java.util.Iterator;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import io.altar.dto.ProductDto;
 
 import io.altar.model.Product;
-
+import io.altar.model.Shelf;
 import io.altar.repository.ProductRepository;
+import io.altar.repository.ShelfRepository;
 
 
 public class ProductBusiness {
 	@Inject
 	private ProductRepository productRepository1;
 	
-
+	@Inject
+	private ShelfRepository shelfRepository1;
+	
 	
 	@Transactional
 	public void createProduct1(Product product1) {
+		Iterator<Shelf> listShelfInProduct = product1.getListShelfIn().iterator();
+
+		Shelf shelfToAdd;
+
+		while (listShelfInProduct.hasNext()) {
+			Shelf shelf1=listShelfInProduct.next();
+			shelfToAdd = shelfRepository1.consultById(shelf1.getId());
+			if (shelfToAdd != null && shelfToAdd.getProdutoAlberga() == null) {
+				shelfToAdd.setProdutoAlberga(product1);
+			} else  {
+				product1.removeShelf(shelf1);
+				listShelfInProduct = product1.getListShelfIn().iterator();
+			}
+		}
 
 		productRepository1.saveId(product1);
 	}
-	
+
 	
 	@Transactional
 	public ProductDto consultProduct(Long id) {
@@ -44,6 +63,25 @@ public class ProductBusiness {
 	
 	@Transactional
 	public void updateProduct(Product product1) {
+		Product oldProduct =productRepository1.consultById(product1.getId()); //este � o id do produto
+		Iterator<Shelf> listShelfInProductToRemove = oldProduct.getListShelfIn().iterator();
+
+		while (listShelfInProductToRemove.hasNext()) {
+			shelfRepository1.consultById(listShelfInProductToRemove.next().getId()).setProdutoAlberga(null);
+			Iterator<Shelf> listShelfInProduct = product1.getListShelfIn().iterator();
+
+			Shelf shelfToAdd;
+
+			while (listShelfInProduct.hasNext()) {
+				Shelf shelf1=listShelfInProduct.next();
+				shelfToAdd = shelfRepository1.consultById(shelf1.getId());
+				if (shelfToAdd != null && shelfToAdd.getProdutoAlberga() == null) {
+					shelfToAdd.setProdutoAlberga(product1);
+				} else  {
+					product1.removeShelf(shelf1);
+					listShelfInProduct = product1.getListShelfIn().iterator();
+				}
+			}
 
 
 			productRepository1.editById(product1);
