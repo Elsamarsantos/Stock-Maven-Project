@@ -87,8 +87,8 @@
                 <div class="row mb-6">
                     <!-- começa aqui a adicinar produtos -->
                     <div class="col-sm-12 col-md-6 col-lg-4 style">
-                        <h4>Adicionar produtos</h4>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Adicionar</button>
+                        <h4>Criar produtos</h4>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Criar</button>
                     </div>
                     <!-- começa o modal de adicionar produto-->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -102,8 +102,9 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <label for="">Lista de prateleiras:</label>
-                                    <input id="listaprateleiras" type="text"><br>
+                                    
+                                    <label for="" data-toggle="tooltip" data-placement="right" title="Deve inserir: #,#," >Lista de prateleiras: </label>
+                                    <input id="listaprateleiras" type="text" ><br>
                                     <label for="">Valor de desconto:</label>
                                     <input id="discountValue" type="text"><br>
                                     <label for="">IVA:</label>
@@ -137,9 +138,11 @@
                             </thead>
                         </table>
                     </div>
-                    <!-- acaba aqui a pesquisar produtos 
+                    <!-- acaba aqui a pesquisar produtos -->
 
-            começa aqui a substituir produtos-->
+                        
+
+            <!--começa aqui a substituir produtos-->
                     <div class="col-sm-12 col-md-6 col-lg-4 style">
                         <h4>Substituir o produto por ID</h4>
                         <form>
@@ -153,7 +156,6 @@
                                 <label for="">Valor de Desconto</label>
                                 <input type="text" class="form-control-sm" id="replacedv" aria-describedby="emailHelp"
                                     placeholder="insert value">
-
                             </div>
                             <div class="form-group">
                                 <label for="">IVA</label>
@@ -168,6 +170,23 @@
                         </form>
 
                     </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 style">
+                            <h4>Lista de Prateleiras no Produto</h4>
+                            <label for="">Pesquisar por Id</label>
+                            <input id="input3" type="text" placeholder="colocar o Id">
+                            <button id="pesquisarlistshelves" class="btn btn-warning btn-sm" onclick="getListShelfInProduct()">Pesquisar</button>
+                            <table id="tablelidtshelf" class="table table-bordered center">
+                                <thead>
+                                    <td>Id</td>
+                                    <td>Capacidade</td>
+                                    <td>Preco de aluguer</td>
+                                </thead>
+                            </table>
+    
+                        </div>
+
+
+
                     <!-- acaba aqui a substituir produtos-->
                     <!-- comeca aqui a apagar produtos-->
                     <div class="col-sm-12 col-md-6 col-lg-4 style">
@@ -198,8 +217,8 @@
                 <div class="row mb-6">
                     <!-- começa aqui a adicionar prateleiras -->
                     <div class="col-sm-12 col-md-6 col-lg-4 style">
-                        <h4>Adicionar prateleiras</h4>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">Adicionar</button>
+                        <h4>Criar prateleiras</h4>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">Criar</button>
                     </div>
                     <!-- comeca o modal -->
                     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -229,10 +248,10 @@
                     </div>
                     <!-- modal acaba aqui -->
 
+                    <!-- acaba aqui a adicinar prateleiras  -->
 
-                    <!-- acaba aqui a adicinar prateleiras 
-
-            começa aqui a pesquisar prateleiras-->
+                     
+            <!--começa aqui a pesquisar prateleiras-->
                     <div class="col-sm-12 col-md-6 col-lg-4 style">
                         <h4>Pesquisar por ID</h4>
                         <label for="">Pesquisar por Id</label>
@@ -276,7 +295,7 @@
                                 <input type="text" class="form-control-sm" id="replaceproductid" placeholder="insert value">
                             </div>
 
-                            <button type="submit" class="btn btn-success" onclick="addreplaceShelves()">Substituir</button>
+                            <button id= "replaceshelf" type="submit" class="btn btn-success" onclick="addreplaceShelves()">Substituir</button>
                         </form>
                     </div>
                     <!-- comeca aqui a apagar produtos-->

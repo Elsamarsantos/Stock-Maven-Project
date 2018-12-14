@@ -35,17 +35,20 @@ public class ShelfBusiness {
 		
 		
 		List<Shelf> shelfList =  shelfRepository1.getAll() ;
-		
-		List<ShelfDto> shelfDtoList = new ArrayList();
-		
-		for(Shelf shelf1: shelfList) {
-			
-		
-			shelfDtoList.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga().getId(),shelf1.getPrecoAluguer()));
-		}
-		
 
-		return shelfDtoList ;
+		List<ShelfDto> shelfDtoList = new ArrayList();
+
+		for(Shelf shelf1: shelfList) {
+
+			if (shelf1.getProdutoAlberga()!= null) {
+				shelfDtoList.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga().getId(),shelf1.getPrecoAluguer()));
+			}
+			else {
+				shelfDtoList.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getPrecoAluguer()));
+			}
+		}
+
+		return shelfDtoList;
 	}
 	
 	@Transactional
@@ -57,8 +60,12 @@ public class ShelfBusiness {
 		List<ShelfDto> shelfDtoList = new ArrayList();
 		
 		for(Shelf shelf1: shelfList) {
-			
-			shelfDtoList.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga().getId(),shelf1.getPrecoAluguer()));
+			if (shelf1.getProdutoAlberga()!= null) {
+				shelfDtoList.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getProdutoAlberga().getId(),shelf1.getPrecoAluguer()));
+			}
+			else {
+				shelfDtoList.add(new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),shelf1.getPrecoAluguer()));
+			}	
 		}
 		
 
@@ -83,7 +90,7 @@ public class ShelfBusiness {
 		ProductDto productDto = new ProductDto(product1.getId(),product1.getValorDesconto(),product1.getPvp(),product1.getPvp());
 		Shelf shelf1=shelfRepository1.consultById(id);
 		
-		ShelfDto shelfDto= new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),productDto,shelf1.getPrecoAluguer());
+		ShelfDto shelfDto= new ShelfDto(shelf1.getId(),shelf1.getCapacidade(),productDto.getId(),shelf1.getPrecoAluguer());
 
 		return shelfDto;
 

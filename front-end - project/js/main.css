@@ -59,7 +59,7 @@ html, body{
     display:none;
     border: solid 1px rgb(99, 98, 98)
 }
-#tableshelfbyid{
+#tableshelfbyid,#tablelidtshelf{
     
     margin-top:6px;
     display:none;
@@ -76,3 +76,4 @@ html, body{
  #tabelaproduto, #tabelaprateleira (tr){
     height: 5px;
  }
+

@@ -65,30 +65,9 @@ public class ProductBusiness {
 	
 	@Transactional
 	public void updateProduct(Product product1) {
-		Product oldProduct =productRepository1.consultById(product1.getId()); //este e o id do produto
-		Iterator<Shelf> listShelfInProductToRemove = oldProduct.getListShelfIn().iterator();
-
-		while (listShelfInProductToRemove.hasNext()) {
-			shelfRepository1.consultById(listShelfInProductToRemove.next().getId()).setProdutoAlberga(null);
-			
-			Iterator<Shelf> listShelfInProduct = product1.getListShelfIn().iterator();
-			Shelf shelfToAdd;
-
-			while (listShelfInProduct.hasNext()) {
-				Shelf shelf1=listShelfInProduct.next();
-				shelfToAdd = shelfRepository1.consultById(shelf1.getId());
-				if (shelfToAdd != null && shelfToAdd.getProdutoAlberga() == null) {
-					shelfToAdd.setProdutoAlberga(product1);
-				} else  {
-					product1.removeShelf(shelf1);
-					listShelfInProduct = product1.getListShelfIn().iterator();
-				}
-			}
-
-
-			productRepository1.editById(product1);
-		}
-
+		
+		
+		productRepository1.editById(product1);
 	
 
 	}
