@@ -65,13 +65,13 @@ public class ProductBusiness {
 	
 	@Transactional
 	public void updateProduct(Product product1) {
-		Product oldProduct =productRepository1.consultById(product1.getId()); //este � o id do produto
+		Product oldProduct =productRepository1.consultById(product1.getId()); //este e o id do produto
 		Iterator<Shelf> listShelfInProductToRemove = oldProduct.getListShelfIn().iterator();
 
 		while (listShelfInProductToRemove.hasNext()) {
 			shelfRepository1.consultById(listShelfInProductToRemove.next().getId()).setProdutoAlberga(null);
+			
 			Iterator<Shelf> listShelfInProduct = product1.getListShelfIn().iterator();
-
 			Shelf shelfToAdd;
 
 			while (listShelfInProduct.hasNext()) {
@@ -102,7 +102,7 @@ public class ProductBusiness {
 		List<ProductDto> productDtoList = new ArrayList();
 		
 		for(Product product1: productList) {
-			productDtoList.add(new ProductDto(product1.getId(),product1.getIva(),product1.getPvp(),product1.getValorDesconto()));
+			productDtoList.add(new ProductDto(product1.getId(),product1.getValorDesconto(),product1.getIva(),product1.getPvp()));
 		}
 		
 

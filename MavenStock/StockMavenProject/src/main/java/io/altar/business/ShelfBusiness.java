@@ -92,44 +92,14 @@ public class ShelfBusiness {
 	@Transactional
 	public void updateShelf(Shelf shelf1) {
 		
-			shelfRepository1.editById(shelf1);
+		
+		Product product1 = shelfRepository1.consultById(shelf1.getId()).getProdutoAlberga();		
+		product1.addToListShelves(shelf1);  //vai colocar a prateleira na lista deste produto
+		shelfRepository1.editById(shelf1);
 		
 	}
 	
 	
 	
-	
-	
-//	public void toeditShelf(Shelf shelf1) {
-//		
-//		
-//		if(shelf1.getId()!=null) { //verifica se existe a shelf
-//
-//			Product newProductInShelf=productRepository1.consultById(shelf1.getProdutoAlberga().getId());//vai buscar o produto pelo id introduzido
-//
-//			Shelf shelfToEdit = shelfRepository1.consultById(shelf1.getId());
-//			Product oldProductInShelf = productRepository1.consultById(shelfToEdit.getProdutoAlberga().getId());
-//			
-//			
-//			if (newProductInShelf !=null) { //se existir este produto entao vai editar a prateleira
-//			
-//				oldProductInShelf.removeShelf(shelf1);
-//
-//				shelf1.setProdutoAlberga(newProductInShelf);	//vai colocar o produto na prateleira	
-//				shelfRepository1.editById(shelf1);
-//				newProductInShelf.addToListShelves(shelf1); //vai colocar a prateleira no produto
-//
-//				
-//				
-//			}else {
-//
-//				shelf1.setProdutoAlberga(oldProductInShelf);
-//				shelfRepository1.editById(shelf1);
-//
-//			}
-//
-//		}
-//
-//	}
 	
 }

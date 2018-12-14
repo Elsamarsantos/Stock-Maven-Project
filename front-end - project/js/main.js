@@ -73,9 +73,20 @@ getShelves()
 
 
 function addProducts() {
+  
 
+    var inputshelves = $('#listaprateleiras').val();
+    var listShelves = [];
 
-     var product = new Product($('listaprateleiras').val(),$('#discountValue').val(),$('#iva').val(), $('#pvp').val());
+    for (let i =0; i< inputshelves.length; i++){
+             listShelves+= "id"+":" + inputshelves[i];
+   
+    }
+
+     var product = {"listshelfIn":[listShelves],
+                    "valorDesconto":$('#discountValue').val(),
+                    "iva":$('#iva').val(), 
+                    "pvp":$('#pvp').val()};
          
 
     $.ajax({
@@ -83,11 +94,9 @@ function addProducts() {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(product),
-        
-        success: function (newproduct) {
+        success: function (data) {
          
-         
-            console.log(newproduct);
+            console.log(data);
             $("#salvar").click(window.location.reload());
         }
         
@@ -99,15 +108,17 @@ function addProducts() {
 function addShelves() {
 
 
-    var shelf = new Shelf($('#capacity').val(), $('#rentPrice').val(), $('#productId').val());
-
+    var shelf = {"capacidade":$('#capacity').val(), 
+                "produtoAlberga":$('#productId').val(),
+                "precoAluguer":$('#rentPrice').val()};
+    
     $.ajax({
         url: 'http://localhost:8080/StockMavenProject/api/shelves/new',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(shelf),
-        success: function (newshelf) {
-            console.log(newshelf);
+        success: function (shelf) {
+            console.log(shelf);
             $("#salvar2").click(window.location.reload());
         }
     });
@@ -161,15 +172,29 @@ function getShelvesbyId() {
 function addreplaceProducts() {
     var pesquisar3 = $('#iptreplaceidproduto').val();
 
-    var productreplace = new Product($('#replacedv').val(), $('#replaceiva').val(), $('#replacepvp').val());
+    var inputshelves = $('#replaceshelves').val();
+    var listShelves = [];
+
+    for (let i =0; i< inputshelves.length; i++){
+             listShelves+= "id"+":" + inputshelves[i];
+   
+    }
+
+
+    var productreplace = {"listshelfIn":[listShelves],
+                    "valorDesconto":$('#replacedv').val(),
+                    "iva":$('#replaceiva').val(), 
+                    "pvp":$('#replacepvp').val()};
+         
 
     $.ajax({
         url: `http://localhost:8080/StockMavenProject/api/products/edit/${pesquisar3}`,
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(productreplace),
-        success: function (replace) {
-            console.log(replace);
+        success: function (productreplace) {
+            console.log(productreplace);
+            $("#replaceproduct").click(window.location.reload());
         }
     });
 };
@@ -177,15 +202,18 @@ function addreplaceProducts() {
 function addreplaceShelves() {
     var pesquisar4 = $('#iptreplaceidshelf').val();
 
-    var shelfreplace = new Product($('#replacecapacity').val(), $('#replaceprodutoid').val(), $('#replacerentprice').val());
+    var shelfreplace = {"capacidade":$('#replacecapacity').val(), 
+                "produtoAlberga":$('#replaceprodutoid').val(),
+                "precoAluguer":$('#replacerentprice').val()};
 
     $.ajax({
         url: `http://localhost:8080/StockMavenProject/api/shelves/edit/${pesquisar4}`,
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(shelfreplace),
-        success: function (replace) {
-            console.log(replace);
+        success: function (shelfreplace) {
+            console.log(shelfreplace);
+            $("#replaceshelf").click(window.location.reload());  
         }
     });
 };
